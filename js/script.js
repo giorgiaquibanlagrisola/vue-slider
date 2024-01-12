@@ -30,6 +30,7 @@ const {createApp}=Vue;
 createApp({
     data() {
         return {
+            currentAtiveSlideIndex: 3,
             slides: [
                 {
                     image: 'img/01.webp',
@@ -59,5 +60,23 @@ createApp({
                 ]
 
         };
+    },
+    methods: {
+        prevSlide() {
+            if (this.currentAtiveSlideIndex > 0){
+                this.currentAtiveSlideIndex--;
+            }
+            else {
+                this.currentAtiveSlideIndex = this.slides.length -1;
+            }
+        },
+        nextSlide() {
+            if (this.currentAtiveSlideIndex < this.slides.length -1) {
+                this.currentAtiveSlideIndex++;
+            }
+            else {
+                this.currentAtiveSlideIndex = 0;
+            }
+        }
     }
 }).mount('#app');
